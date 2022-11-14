@@ -7,10 +7,6 @@ const Board = ({ size,setWinner,winner }) => {
   const [board, setBoard] = useState(Array(r * c).fill(''))
   const [player, setPlayer] = useState('X')
 
-  useEffect(() => {
-    localStorage.setItem('winner', winner);
-  },[winner])
-
   const handle = (idx) => {
     const newBoard = [...board];
     for (let i = r - 1; i >= 0; i--) {
