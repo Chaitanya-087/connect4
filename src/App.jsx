@@ -18,7 +18,7 @@ const App = () => {
         </div>
 
       </div>
-      <Board size={size} setWinner={setWinner} winner={winner}/>
+      <Board size={size} setWinner={setWinner} />
       <div className={'bottom ' + winner}></div>
     </div>
   )

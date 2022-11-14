@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 
-const Board = ({ size,setWinner,winner }) => {
+const Board = ({ size,setWinner }) => {
   const { r, c } = size;
   const k = Math.max(r, c);
   const [board, setBoard] = useState(Array(r * c).fill(''))
   const [player, setPlayer] = useState('X')
+  const [moves,setMoves] = useState([])
 
   const handle = (idx) => {
+    setMoves(moves =>[...moves,idx % c])
     const newBoard = [...board];
     for (let i = r - 1; i >= 0; i--) {
       if (newBoard[idx % k] === '' && newBoard[i * k + idx % k] === '') {
@@ -18,6 +20,7 @@ const Board = ({ size,setWinner,winner }) => {
     setBoard(newBoard);
     console.log(checkWinner(newBoard, player))
     setPlayer(prev => prev === 'X' ? 'O' : 'X');
+    console.log(moves);
   }
 
   const markWinner = (arr, player) => {
